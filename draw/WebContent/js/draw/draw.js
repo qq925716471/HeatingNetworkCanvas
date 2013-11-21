@@ -942,7 +942,7 @@ window.onload = function(e) {
 	bodyclick = document.getElementsByTagName('body').item(0);
 	rSelects();
 	bodyclick.onclick = function() {
-		for (i = 0; i < selects.length; i++) {
+		for (var i = 0; i < selects.length; i++) {
 			$id('select_info_' + selects[i].name).className = 'tag_select';
 			$id('options_' + selects[i].name).style.display = 'none';
 		}

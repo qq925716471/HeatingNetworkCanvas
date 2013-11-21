@@ -4,7 +4,7 @@ var width = document.body.clientWidth - 2 * canvas.offsetTop;
 var height = document.body.clientHeight - 2 * canvas.offsetLeft;
 canvas.width = width;
 canvas.height = height;
-c.scale(width / 1200, height / 600)
+c.scale(width / 1200, height / 600);
 var lines = [];
 var icons = [];
 var texts = [];
@@ -48,10 +48,10 @@ function createXMLHttp() {
 }
 function init() {
 	if (xmlhttp == null) {
-		createXMLHttp()
+		createXMLHttp();
 	}
 	xmlhttp.onreadystatechange = state_Change;
-	xmlhttp.open("post", "getPicture?stationName=a", true);
+	xmlhttp.open("post", "getPicture.action?stationName=a", true);
 	xmlhttp.send(null);
 
 }
@@ -137,7 +137,7 @@ function waterFlow(line) {
 			lineX = parseInt(line.x) + parseInt(line.water[j].x++);
 			lineY = parseInt(line.y) + 1 + parseInt(line.water[j].y);
 			if (parseInt(line.water[j].x + 3) > line.w) {
-				line.water[j].x = 3
+				line.water[j].x = 3;
 			}
 			c.arc(lineX, lineY, 3, 0, Math.PI * 2, false);
 			c.fill();
@@ -246,7 +246,7 @@ function drawIcons() {
 				var h = Math.floor(eval(initContext(icon.volume))* (icon.h - icon.h*0.25));
 				var x = Math.floor(icon.x + icon.w * 0.08);
 				var y = icon.y+ icon.h - 0.2 * icon.h -h;
-				var w = Math.floor(icon.w*0.82) 
+				var w = Math.floor(icon.w*0.82); 
 				c.save();
 				var gradient = c.createLinearGradient( x, y , x , y+h);
 				gradient.addColorStop(0, '#afdfe4');
@@ -284,7 +284,7 @@ function drawLighting(icon){
  * @param {Object} icon
  */
 function draw(icon) {
-	var color, s, e;
+	var  s, e;
 	var d = 0;
 	c.save();
 	d = degreesList[times];
@@ -345,9 +345,9 @@ function initContext(s) {
 			newS = s;
 		} else {
 			newS += s.substring(0, s.indexOf("{"));
-			key = s.substring(s.indexOf("{") + 1, s.indexOf("}"))
+			key = s.substring(s.indexOf("{") + 1, s.indexOf("}"));
 			newS += showData[key];
-			newS += initContext(s.substr(s.indexOf("}") + 1, s.length - 1))
+			newS += initContext(s.substr(s.indexOf("}") + 1, s.length - 1));
 		}
 	}
 	return newS;
@@ -384,9 +384,8 @@ canvas.onmousemove = function(e) {
 	}
 	this.style.cursor = "default";
 	select = null;
-}
+};
 canvas.onclick = function() {
-	var isOpen;
 	if (select != null) {
 		for ( var i in icons) {
 			icon = icons[i];
@@ -424,11 +423,11 @@ canvas.onclick = function() {
 							.open(
 									icon.win,
 									'',
-									'height=400, width=800, top=100,left=100, toolbar=no, menubar=no, scrollbars=no,titlebar=no, resizable=no,location=no,status=no')
+									'height=400, width=800, top=100,left=100, toolbar=no, menubar=no, scrollbars=no,titlebar=no, resizable=no,location=no,status=no');
 		}
 
 	}
-}
+};
 
 function changAlpha(icon) {
 	if (times <= 60) {
@@ -451,6 +450,6 @@ window.onresize = function() {
 	height = document.body.clientHeight - 2 * canvas.offsetLeft;
 	canvas.width = width;
 	canvas.height = height;
-	c.scale(width / 1200, height / 600)
-}
+	c.scale(width / 1200, height / 600);
+};
 
