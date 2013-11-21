@@ -1,0 +1,220 @@
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		 <script src="js/draw/html5.js"></script>
+		<style type="text/css">
+body {
+    background: none repeat scroll 0 0 #CFDFEF;
+    font: 12px/150% "Lucida Grande",Arial,Verdana,Helvetica,sans-serif;
+}
+
+.formDiv{
+	position:absolute;
+	top:330;
+	left:400;
+	z-index: 1000; 
+	width:160px; height:230px; 
+	text-align:center;
+ 	background-color:#CFDFEF; 
+ 	display:none;
+}
+
+.tempDiv{
+	position:absolute;
+	top:330;
+	left:400;
+	z-index: 1001; 
+	width:300px; height:300px; 
+	text-align:center;
+ 	background-color:#CFDFEF; 
+ 	display:none;
+}
+
+.tools{
+	position:relative;
+	height : 40px;
+	float:left;
+	border:1px solid;
+}
+
+.tool{
+	height:30px;
+	float:left;
+	cursor:pointer;
+	padding:5px;
+	filter:alpha(Opacity=70);
+	opacity: 0.7;
+}
+
+
+.tool2 {
+	height:30px;
+	float:left;
+	cursor:pointer;
+	padding:5px;
+	filter:alpha(Opacity=100);
+	opacity: 1;
+}
+
+#uboxstyle .select_box {
+    height: 24px;
+    width: 100px;
+}
+#macstyle .select_box {
+    height: 24px;
+    width: 91px;
+}
+#tm2008style .select_box {
+    height: 24px;
+    width: 102px;
+}
+#uboxstyle div.tag_select {
+    background: url("js/icons/ubox-select.gif") no-repeat scroll 0 0 transparent;
+    color: #79A2BD;
+    display: block;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 10px;
+    width: 80px;
+}
+#uboxstyle div.tag_select_hover {
+    background: url("js/icons/ubox-select.gif") no-repeat scroll 0 -24px transparent;
+    color: #79A2BD;
+    display: block;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 10px;
+    width: 80px;
+}
+#uboxstyle div.tag_select_open {
+    background: url("js/icons/ubox-select.gif") no-repeat scroll 0 -48px transparent;
+    color: #79A2BD;
+    display: block;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 10px;
+    width: 80px;
+}
+#uboxstyle ul.tag_options {
+    background: url("js/icons/ubox-select.gif") no-repeat scroll right bottom transparent;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0 0 5px;
+    position: absolute;
+    width: 100px;
+}
+#uboxstyle ul.tag_options li {
+    background: url("js/icons/ubox-select.gif") repeat-y scroll -100px 0 transparent;
+    color: #79A2BD;
+    display: block;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 10px;
+    text-decoration: none;
+    width: 80px;
+}
+#uboxstyle ul.tag_options li.open_hover {
+    background: url("js/icons/ubox-select.gif") no-repeat scroll 0 -72px transparent;
+    color: #FFFFFF;
+}
+#uboxstyle ul.tag_options li.open_selected {
+    background: url("js/icons/ubox-select.gif") no-repeat scroll 0 -96px transparent;
+    color: #FFFFFF;
+}
+table{ 
+		width:160px; 
+		height:230px;
+    	border-collapse:collapse;}
+td {
+    border: 1px solid #C1DAD7;  
+    background: #79A2BD;
+    font-size:11px;
+    color: #4f6b72;
+}
+td.alt {
+    background: #F5FAFA;
+    color: #797268;
+}
+input{ 
+		width: 95px;
+}
+img{
+	height: 30px;
+	width: 30px;
+}
+}
+		</style>
+			<script type="text/javascript" src = "js/draw/jquery-2.0.0.min.js"></script>
+	</head>
+	<body>
+	<div id="toolCanvas"  class="tools">
+			<div class="tool" title="管线" id="line"><img name="line" src="js/icons/waterflow.png"  /></div>
+			<div class="tool" title="阀门" id="icon"><img name="icon" src="js/icons/icon.png"  /></div>
+			<div class="tool" title="换热器" id="hrq"><img name="icon" src="js/icons/hrq.png"  /></div>
+			<div class="tool" title="阀门" id="S1" ><img name="icon" src="js/icons/S1.png"  /></div>
+			<div class="tool" title="阀门" id="S2"><img name="icon" src="js/icons/S2.png"  /></div>
+			<div class="tool" title="阀门" id="S3"><img name="icon" src="js/icons/S3.png"  /></div>
+			<div class="tool" title="循环泵" id="xhb"><img name="icon" src="js/icons/xhb.png"  /></div>
+			<div class="tool" title="报警灯" id="bjd"><img name="icon" src="js/icons/jbd.png"  /></div>
+			<div class="tool" title="水箱" id="wb"><img name="icon" src="js/icons/waterbox.jpg"  /></div>
+			<div class="tool" title="文字" id="text"><img name="text" src="js/icons/word.jpg"  /></div>
+			<div class="tool" title="选择" id="select"><img name="select" src="js/icons/select.jpg" /></div>
+			<div class="tool2" title="保存" id= "save"><img src="js/icons/save.gif"  /></div>
+			<div class="tool2" title="删除所有" id= "delete"><img src="js/icons/delete.png"  /></div>
+			<div class="tool2"><input type="checkbox" id="showBackImg"/>显示背景</div>
+		</div>
+	<div id ="canvasDiv" >
+		<canvas id="canvas" >
+		换个浏览器吧,该浏览器已不支持html新特性。
+		</canvas>
+	</div>
+	
+		<div id ="lineForm" class="formDiv"><table >
+		<tr><td>id</td><td><input id ="lineId" readonly="readonly"> </td></tr>
+		<tr><td>x坐标</td><td><input id ="lineX"> </td></tr>
+		<tr><td>y坐标</td><td><input id = "lineY"> </td></tr>
+		<tr><td>宽度</td><td><input id = "lineW"> </td></tr>
+		<tr><td>高度</td><td><input id = "lineH"> </td></tr>
+		<tr><td>颜色</td><td><input id = "lineColor"> </td></tr>
+		<tr><td>流向</td><td><div id="uboxstyle"><select id="flow">
+		<option value="west">右</option> 
+		<option value="east">左</option> 
+		<option value="north">上</option> 
+		<option value="south">下</option> </select></div> </td></tr>
+		<tr><td>操作</td><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascrpt:;" id="addLine">确定</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascrpt:;" id="deleteLine">删除</a></td></tr>
+		</table> </div>
+		
+		<div id ="iconForm" class="formDiv"><table >
+		<tr><td>id</td><td><input id ="iconId" readonly="readonly"> </td></tr>
+		<tr><td>x坐标</td><td><input id ="iconX"> </td></tr>
+		<tr><td>y坐标</td><td><input id = "iconY"> </td></tr>
+		<tr><td>宽度</td><td><input id = "iconW"> </td></tr>
+		<tr><td>高度</td><td><input id = "iconH"> </td></tr>
+		<tr><td>操作管线</td><td><input id = "lines"> </td></tr>
+		<tr><td>弹出窗口</td><td><input id = "win"> </td></tr>
+		<tr id="conditionTr"><td>报警条件</td><td><input id = "condition"> </td></tr>
+		<tr id="volumeTr"><td>容量设置</td><td><input id = "volume"> </td></tr>
+		<tr><td>操作</td><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" id = "addIcon" >确定</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" id = "deleteIcon" >删除</a></td></tr>
+		</table> </div>
+		
+		<div id ="textForm" class="formDiv"><table >
+		<tr><td>id</td><td><input id ="textId" readonly="readonly"> </td></tr>
+		<tr><td>x坐标</td><td><input id ="textX"> </td></tr>
+		<tr><td>y坐标</td><td><input id = "textY"> </td></tr>
+		<tr><td>宽度</td><td><input id = "textW"> </td></tr>
+		<tr><td>高度</td><td><input id = "textH"> </td></tr>
+		<tr><td>颜色</td><td><input id = "textColor"> </td></tr>
+		<tr><td>大小</td><td><input id = "size"> </td></tr>
+		<tr><td>内容</td><td><input id = "context"> </td></tr>
+		<tr><td>操作</td><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" id = "addText" >确定</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" id = "deleteText" >删除</a></td></tr>
+		</table> </div>
+		
+		<div id ="tempDiv" class="tempDiv">
+			<canvas id="tempCanvas" width="300" height="300">
+			换个浏览器吧,该浏览器已不支持html新特性。
+		</canvas>
+		</div>
+	</body>
+	<script type="text/javascript" src = "js/draw/draw.js"></script>
+</html>
+
